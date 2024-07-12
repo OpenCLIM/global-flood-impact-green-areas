@@ -26,6 +26,10 @@ greenareas_path = os.path.join(outputs_path, 'green_areas')
 greenareas_path_ = outputs_path + '/' + 'green_areas'
 if not os.path.exists(greenareas_path):
     os.mkdir(greenareas_path_)
+parameter_outputs_path = os.path.join(outputs_path, 'parameters')
+parameter_outputs_path_ = outputs_path + '/' + 'parameters'
+if not os.path.exists(parameter_outputs_path):
+    os.mkdir(parameter_outputs_path_)
 
 # Look to see if a parameter file has been added
 parameter_file = glob(parameters_path + "/*.csv", recursive = True)
@@ -104,6 +108,20 @@ else:
 
 print('permeable_areas:',permeable_areas)
 
-# Print all of the input parameters to an excel sheet to be read in later
-with open(os.path.join(parameter_file[0]), 'a') as f:
-    f.write('PERMEABLE_AREAS,%s\n' %permeable_areas)
+# Move the amended parameter file to the outputs folder
+if len(parameter_file) == 1 :
+    
+    # Print all of the input parameters to an excel sheet to be read in later
+    with open(os.path.join(parameter_file[0]), 'a') as f:
+        f.write('PERMEABLE_AREAS,%s\n' %permeable_areas)
+    
+    file_path = os.path.splitext(parameter_file[0])
+    print('Filepath:',file_path)
+    filename=file_path[0].split("/")
+    print('Filename:',filename[-1])
+
+    src = parameter_file[0]
+    print('src:',src)
+    dst = os.path.join(parameter_outputs_path,filename[-1] + '.csv')
+    print('dst,dst')
+    shutil.copy(src,dst)
