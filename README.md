@@ -1,11 +1,9 @@
 # vector-mesh
-This model takes national scale datasets and clips them to a geographical area.
+This model takes greenspace polygons supplied by the user, clips the data to the domain and ensures the data is in the correct projection.
 
 ## Description
-National scale datasets are too large to upload onto DAFNI, and processing these large datasets is time extensive. Models such as City Catchment Analysis Tool,
-require vector data from the national datasets for a city of interest. The national data sets have been uploaded onto DAFNI in zip format for each 50km OS grid cell. 
-Geopackage files within the zip folders contain the vector data per 5km OS grid cell. This model identifies which 5km grid cells are contained within the boundary 
-file for the city of interest, and merges the geopackage to generate a single gpkg file for the city.
+The CityCAT model can use greenspace polygons to determine permeability. This model accepts greenspace data in .gpkg format, clips the data to the
+    selected area, and ensures all data is in the same projection. If the file sizes are too large, multiple .gpkgs can be added directly, or zipped.
 
 ## Input Parameters
 *Location
