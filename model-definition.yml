@@ -1,0 +1,48 @@
+kind: M
+api_version: v1beta3
+metadata:
+  display_name: Global Urban_Flooding:Extract Buildings
+  contact_point_name: Olivia Butters
+  contact_point_email: olivia.butters@newcastle.ac.uk
+  name: global-building-inputs
+  publisher: Newcastle University
+  summary: >
+    This model takes building polygons supplied by the user, clips the data to the domain and ensures the data is in the correct projection.
+  source_code: https://github.com/OpenCLIM/vector-mesh
+  description: >
+    The CityCAT model relies on building footprint data. Open source data can be obtained from Open Street Map (https://www.openstreetmap.org/),
+    Open Buildings (https://sites.research.google/open-buildings/) etc. This model accepts building data in .gpkg format, clips the data to the
+    selected area, and ensures all data is in the same projection. If the file sizes are too large, multiple .gpkgs can be added directly, or zipped.
+
+
+spec:
+  inputs:
+    dataslots:
+      - name: Boundary File
+        description:
+          A .gpkg or .shp file containing the boundary of the location of interest.
+        path: inputs/boundary/
+        required: false
+
+      - name: Vectors
+        description:
+          Building polygons saved in .gpkg format. Zipped .gpkg files will also be accepted. 
+        path: inputs/vectors/
+        default: 
+        - 63740443-15c8-46e0-9229-c45446635ba5
+        required: True
+
+      - name: Parameters
+        description:
+          All input parameters and their values are stored in a csv file.
+        path: inputs/parameters/
+        required: false
+         
+        
+  outputs:
+    datasets:
+      - name: outputs/buildings/*
+        type: folder
+        description:
+          A gpgk of existing building data for the city of interest.
+        
