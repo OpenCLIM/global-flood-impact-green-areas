@@ -17,9 +17,6 @@ The CityCAT model can use greenspace polygons to determine permeability. This mo
 * Boundary
   * Description: A .gpkg of the geographical area of interest. 
   * Location: /data/boundary
-* Grids
-  * Description: A .gpkg of the OS British National Grid cells.
-  * Location: /data/grids
 
 ## Outputs
 The model should output only one file - a .gpkg file of the chosen area containing the vectors of interest.
