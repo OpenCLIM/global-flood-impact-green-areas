@@ -1,0 +1,42 @@
+kind: M
+api_version: v1beta3
+metadata:
+  display_name: Global Urban_Flooding:Extract Greenspaces
+  contact_point_name: Olivia Butters
+  contact_point_email: olivia.butters@newcastle.ac.uk
+  name: global-green-inputs
+  publisher: Newcastle University
+  summary: >
+    This model takes greenspace polygons supplied by the user, clips the data to the domain and ensures the data is in the correct projection.
+  source_code: XX
+  description: >
+    The CityCAT model can use greenspace polygons to determine permeability. This model accepts greenspace data in .gpkg format, clips the data to the
+    selected area, and ensures all data is in the same projection. If the file sizes are too large, multiple .gpkgs can be added directly, or zipped.
+spec:
+  inputs:
+    dataslots:
+      - name: Boundary File
+        description:
+          A .gpkg or .shp file containing the boundary of the location of interest.
+        path: inputs/boundary/
+        required: false
+
+      - name: Vectors
+        description:
+          Greenspace polygons saved in .gpkg format. Zipped .gpkg files will also be accepted. 
+        path: inputs/vectors/
+        required: false
+
+      - name: Parameters
+        description:
+          All input parameters and their values are stored in a csv file.
+        path: inputs/parameters/
+        required: false
+          
+  outputs:
+    datasets:
+      - name: outputs/green_areas/*
+        type: folder
+        description:
+          A gpgk of existing greenspace data for the city of interest.
+        
