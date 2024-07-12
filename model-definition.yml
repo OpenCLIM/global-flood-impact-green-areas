@@ -39,4 +39,9 @@ spec:
         type: folder
         description:
           A gpgk of existing greenspace data for the city of interest.
+
+      - name: outputs/parameters/*
+        type: folder
+        description:
+          All parameters and their values are stored in a csv file.
         
