@@ -1,4 +1,4 @@
-# vector-mesh
+# Green-Areas
 This model takes greenspace polygons supplied by the user, clips the data to the domain and ensures the data is in the correct projection.
 
 ## Description
