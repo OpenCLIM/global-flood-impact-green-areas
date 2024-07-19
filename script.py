@@ -6,6 +6,7 @@ import shutil
 from zipfile import ZipFile
 from glob import glob
 import subprocess
+import csv
 
 # Define Data Paths
 data_path = os.getenv('DATA_PATH', '/data')
