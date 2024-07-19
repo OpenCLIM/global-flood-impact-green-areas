@@ -22,6 +22,7 @@ spec:
           If `PERMEABLE_AREAS` is set to "polygons", polygons from the `green_areas` dataslot are used to define areas which are permeable.
           Otherwise, all cells are treated as being "permeable" or "impermeable", depending on the selection.
         required: true
+        default: permeable
         options:
           - name: polygons
             title: Polygons
