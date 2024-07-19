@@ -38,10 +38,18 @@ print('parameter_file:', parameter_file)
 # Identify the EPSG projection code
 if len(parameter_file) == 1 :
     parameters = pd.read_csv(parameter_file[0])
-    projection = parameters.loc[2][1]
-    print('projection:',projection)
+    with open(parameter_file[0]) as file_obj:
+        reader_obj = csv.reader(file_obj)
+        for row in reader_obj:
+            try:
+                if row[0] == 'PROJECTION':
+                    projection = row[1]
+            except:
+                continue
 else:
     projection = os.getenv('PROJECTION')
+
+print('projection:',projection)
 
 # Identify input polygons and shapes (boundary of city, and OS grid cell references)
 boundary_1 = glob(boundary_path + "/*.*", recursive = True)
