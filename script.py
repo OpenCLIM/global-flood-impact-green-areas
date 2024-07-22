@@ -120,10 +120,6 @@ print('permeable_areas:',permeable_areas)
 # Move the amended parameter file to the outputs folder
 if len(parameter_file) == 1 :
     
-    # Print all of the input parameters to an excel sheet to be read in later
-    with open(os.path.join(parameter_file[0]), 'a') as f:
-        f.write('PERMEABLE_AREAS,%s\n' %permeable_areas)
-    
     file_path = os.path.splitext(parameter_file[0])
     print('Filepath:',file_path)
     filename=file_path[0].split("/")
@@ -134,3 +130,7 @@ if len(parameter_file) == 1 :
     dst = os.path.join(parameter_outputs_path,filename[-1] + '.csv')
     print('dst,dst')
     shutil.copy(src,dst)
+
+    # Print all of the input parameters to an excel sheet to be read in later
+    with open(os.path.join(dst), 'a') as f:
+        f.write('PERMEABLE_AREAS,%s\n' %permeable_areas)
