@@ -119,7 +119,7 @@ else:
 print('permeable_areas:',permeable_areas)
 
 # Print all of the input parameters to an excel sheet to be read in later
-with open(os.path.join('greenareas-parameters.csv'), 'w') as f:
+with open(os.path.join(parameter_outputs_path,'greenareas-parameters.csv'), 'w') as f:
     f.write('PARAMETER,VALUE\n')
     f.write('PERMEABLE_AREAS,%s\n' %permeable_areas)
 
