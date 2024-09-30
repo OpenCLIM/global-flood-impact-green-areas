@@ -111,8 +111,18 @@ if len(green_files) != 0:
 
     permeable_areas = 'polygons'
 
-    # Print to a gpkg file
-    clipped.to_file(os.path.join(greenareas_path, location + '.gpkg'),driver='GPKG',index=False)
+    all_greens = clipped.to_file(os.path.join(outputs_path,'all_greenareas.shp'))
+    all_greens = gpd.read_file(os.path.join(outputs_path,'all_greenareas.shp'))
+    all_greens = all_greens.explode()
+    all_greens.reset_index(inplace=True, drop=True)
+    all_greens1 = all_greens.to_file(os.path.join(greenareas_path, location + '.gpkg'),driver='GPKG',index=False)
+    
+    os.remove(os.path.join(outputs_path,'all_greenareas.shp'))
+    os.remove(os.path.join(outputs_path,'all_greenareas.cpg'))
+    os.remove(os.path.join(outputs_path,'all_greenareas.dbf'))
+    os.remove(os.path.join(outputs_path,'all_greenareas.prj'))
+    os.remove(os.path.join(outputs_path,'all_greenareas.shx'))
+    
 else:
     permeable_areas = os.getenv('PERMEABLE_AREAS')
 
